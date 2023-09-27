@@ -66,13 +66,28 @@ function orderStrawberry() {
 
 function drawCart() {
   let cost = 0
+  let content = ''
   iceCream.forEach(flavor => {
     if (flavor.quantity > 0) {
       const flavorCost = (flavor.price * flavor.quantity)
       cost += flavorCost
     }
   })
+  iceCream.forEach(flavor => {
+    if (flavor.quantity > 0) {
+      const flavorCost = (flavor.price * flavor.quantity)
+      content += `<p>
+      ${flavor.name} | Qty:${flavor.quantity} | Price: $${flavorCost} </p>`
+    }
+  })
   console.log('cost:', cost)
+  // return cost
+
+  const costElement = document.getElementById('cost')
+  costElement.innerText = cost
+
+  const cartElement = document.getElementById('cart')
+  cartElement.innerHTML = content
 }
 
 
