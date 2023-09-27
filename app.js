@@ -40,7 +40,7 @@ function orderVanilla() {
   // console.log('ordering vanilla')
   const vanilla = iceCream.find(flavor => flavor.name == 'Vanilla')
   vanilla.quantity++
-  console.log(vanilla);
+  // console.log(vanilla);
   drawCart()
 }
 
@@ -48,7 +48,7 @@ function orderCookieDough() {
   // console.log('ordering vanilla')
   const cookieDough = iceCream.find(flavor => flavor.name == 'Cookie Dough')
   cookieDough.quantity++
-  console.log(cookieDough);
+  // console.log(cookieDough);
   drawCart()
 }
 
@@ -56,13 +56,13 @@ function orderStrawberry() {
   // console.log('ordering vanilla')
   const strawberry = iceCream.find(flavor => flavor.name == 'Strawberry')
   strawberry.quantity++
-  console.log(strawberry);
+  // console.log(strawberry);
   drawCart()
 }
 
 function orderToppings(toppingName) {
   const foundTopping = toppings.find(topping => topping.name == toppingName)
-  console.log(toppingName, foundTopping)
+  // console.log(toppingName, foundTopping)
   foundTopping.quantity++
   drawCart()
 }
@@ -100,7 +100,7 @@ function drawCart() {
     }
   })
 
-  console.log('cost:', cost)
+  // console.log('cost:', cost)
   // return cost
 
   const costElement = document.getElementById('cost')
@@ -108,6 +108,16 @@ function drawCart() {
 
   const cartElement = document.getElementById('cart')
   cartElement.innerHTML = content
+}
+
+function checkout() {
+  const wantsToCheckout = window.confirm("Are you sure you want to submit your order?")
+  if (!wantsToCheckout) {
+    return
+  }
+  iceCream.forEach(flavor => flavor.quantity = 0)
+  toppings.forEach(flavor => flavor.quantity = 0)
+  drawCart()
 }
 
 
