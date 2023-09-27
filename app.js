@@ -60,7 +60,12 @@ function orderStrawberry() {
   drawCart()
 }
 
-
+function orderToppings(toppingName) {
+  const foundTopping = toppings.find(topping => topping.name == toppingName)
+  console.log(toppingName, foundTopping)
+  foundTopping.quantity++
+  drawCart()
+}
 
 
 
@@ -80,6 +85,21 @@ function drawCart() {
       ${flavor.name} | Qty:${flavor.quantity} | Price: $${flavorCost} </p>`
     }
   })
+
+  toppings.forEach(flavor => {
+    if (flavor.quantity > 0) {
+      const flavorCost = (flavor.price * flavor.quantity)
+      cost += flavorCost
+    }
+  })
+  toppings.forEach(flavor => {
+    if (flavor.quantity > 0) {
+      const flavorCost = (flavor.price * flavor.quantity)
+      content += `<p>
+      ${flavor.name} | Qty:${flavor.quantity} | Price: $${flavorCost} </p>`
+    }
+  })
+
   console.log('cost:', cost)
   // return cost
 
